@@ -1,0 +1,63 @@
+senders:
+
+  ## This will output to app/log/qtool_example.log
+  LOCALFILE:
+    connector_class: lib.senders.syslog.QFileSender
+    alias: LOCALFILE
+    directory: logs
+    file: 'qtool_example.log'
+
+  ## You can make multiple senders of the same type, but they must have unique aliases.
+  LOCALFILE_ALTERNATIVE:
+    connector_class: lib.senders.syslog.QFileSender
+    alias:   LOCALFILE_ALTERNATIVE
+    directory: logs
+    file: 'qtool_example.log'
+
+#  SYSLOG_TCP:
+#    alias: SPLUNK_SYSLOG_UDP
+#    connector_class: lib.senders.syslog.QSyslogSender
+#    host: localhost
+#    port: '514'
+#    protocol: tcp
+
+#  SYSLOG_UDP:
+#    alias: SYSLOG_UDP
+#    connector_class: lib.senders.syslog.QSyslogSender
+#    host: localhost
+#    port: '515'
+#    protocol: udp
+
+#  SPLUNK_HEC:
+#    alias: SPLUNK_HEC
+#    connector_class: lib.senders.splunk.QSplunkHECSender
+#    url: "http://splunk-fqdn:8088/services/collector/event"
+#    auth_code: "f3dae192-1fd4-4123-9e22-57fef1a060aa"
+#    verify_ssl: False
+#    index: "main"
+
+#  LOGSTASH:
+#    alias: LOGSTASH
+#    connector_class: lib.senders.logstash.QLogstashSender
+#    host: 192.168.10.1
+#    port: 5959
+#    protocol: tcp       ## udp or tcp
+
+#  LOCALFILE:
+#    connector_class: lib.senders.syslog.QFileSender
+#    alias: LOCALFILE
+#    directory: logs
+#    file: 'local_dest.log'
+
+#  OPENSEARCH_LOCAL:
+#    alias: ZINCSEARCH_LOCAL
+#    connector_class: lib.senders.opensearch.QOpenSearchSender
+#    url: "http://127.0.0.1:4080/api/"
+#    username: "username"
+#    password: "elastic"
+#    index: "test1"
+#    index_name_append: ""
+#    index_name_sep: ""
+#    http_compress: False
+#    use_ssl: False
+#    verify_certs: False

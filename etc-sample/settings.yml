@@ -1,0 +1,11 @@
+store:
+     ## Developer use only - will later be used for serialising results that can be used for testing
+     path: ./store/
+applog:
+     ##  app logging (not Poller), note output can be surprised using the -s flag on the command line
+
+     ## Output level, support values "info" and "debug"
+     output_level: info
+
+     ## Output app-logging to file, default value is False, to output to file, specify the path with filename
+     output_file: False  ## False, or path to file

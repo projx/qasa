@@ -1,0 +1,9 @@
+version: "3"
+services:
+  qtool:
+    image: ghcr.io/projx/qtool:v0.1.5
+    container_name: qtool
+    restart: unless-stopped
+    volumes:
+      - ./etc/:/app/etc
+      - ./logs/:/app/logs

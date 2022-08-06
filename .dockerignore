@@ -1,0 +1,6 @@
+.git
+.gitingore
+__pycache__
+*.md
+!README*.md
+README-secret.md

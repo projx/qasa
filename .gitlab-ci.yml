@@ -1,0 +1,11 @@
+include:
+  - project: 'kelvin/_templates'
+    file: 'docker-build-ci.yml'
+
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Docker.gitlab-ci.yml
+
+stages:
+  - notify_start
+  - build
+  - notify

@@ -1,0 +1,15 @@
+formatters:
+  CSV:
+    alias: CSV
+    connector_class: lib.formatters.csv.QCSVFormatter
+    prefix_timestamp: "%Y/%m/%d %H:%M:%S.%f %z"
+  JSON:
+    alias: JSON
+    connector_class: lib.formatters.json.QJSONFormatter
+    prefix_timestamp: "%Y/%m/%d %H:%M:%S.%f %z"
+
+  ##  NOTE: The Dict is primary intented for use
+  DICT:
+    alias: DICT
+    connector_class: lib.formatters.dict.QDictFormatter
+    prefix_timestamp: false

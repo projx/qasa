@@ -1,0 +1,52 @@
+pollers:
+  WEB-YAHOO:
+    alias: WEB-YAHOO
+    connector_class: lib.pollers.http.QHTTPCheck
+    sender: LOCALFILE                             ## SEE senders.yml for how this is configured
+    formatter: JSON                               ## SEE formatters.yml for how this is configured
+    interval: 20
+    type: web-check                               ## Just an identify that gets inserted with the Sender data, useful for grouping by etc
+    url_type: "External"
+    url: "https://www.yahoo.com"
+    headers_only: false
+    timeout: 5
+    contains:       ## Workds that should be search for in the webpage
+      - hello
+      - check
+    verify_ssl: true
+    tags:
+      - http
+      - website
+
+#  UBNT-WAP-01:
+#    alias: UN-SW-SVR-TOP
+#    connector_class: lib.pollers.snmp.QSNMPNetDevice
+#    sender: SPLUNK_HEC
+#    formatter: JSON
+#    community: 1nKquir3R434wer3
+#    type: firewall
+#    host: 10.10.50.186
+#    interval: '15'
+#    snmp_version: snmpv2c
+
+#  UBNT-SWITCH-01:
+#    alias: UN-AP-LOUNGE-OFFICE
+#    connector_class: lib.pollers.snmp.QSNMPNetDevice
+#    sender: SPLUNK_HEC
+#    formatter: JSON
+#    community: 1nKquir3R434wer3
+#    type: firewall
+#    host: 10.10.50.193
+#    interval: '15'
+#    snmp_version: snmpv2c
+
+#  APC-UPS:
+#    alias: APC-UPS
+#    connector_class: lib.pollers.snmp.QSNMPApcUPS
+#    sender: ZINCSEARCH_LOCAL
+#    formatter: DICT
+#    community: 1nKquir3R434wer3
+#    type: ups
+#    host: 10.10.50.201
+#    interval: '5'
+#    snmp_version: snmpv2c
