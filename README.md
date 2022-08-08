@@ -8,19 +8,27 @@ I highly recommend reading this whole page before attempting to deploy QASA, esp
 
 ## Why use is it?
 
-Software such as Grafana and Prometheus, can already do the querying, and give pretty analytics dashboards - So why this? I don't want to run a dozen different monitoring apps, I wanted the freedom of being able to easily point my data elsewhere, such as Splunk, ELK or even a Cloud service. So I wrote QASA. Currently use it for monitoring:
+Software such as Grafana and Prometheus, can already do the querying, and give pretty analytics dashboards - So why this? Well thats upto you, but for me:
 
-- Firewall throughput on my Firewall and Switches
+- first, I don't want to run a dozen different monitoring apps, I want everything (Logs, Polls, Status etc) under 1 monitoring app.
+- second, I wanted the the ability to be able to move where the data was sent, i.e. Splunk, ELK, Loki or even a cloud service.
+- third, I used this alongside other agents, including MetricsBeat, and they compliment each other.
+
+I'm releasing it now, as whilst I can spend weeks or months adding other features, but actually,  I've used it for over a year now, and its been pretty solid for monitoring:
+
+- Network throughput on my Firewall and Switches
 - UPS performance (Load, remaining time etc)
 - NAS storage utilisation
-- Internet connection speed-tests
+- Check websites are available and latency load times
 - Query certain Web APIs
 
+ Uptime Kuma has inspired me to add  Web UI to it
 ## This is how it works:
 
 [![asciicast](https://asciinema.org/a/ueV8f0BDTwVg2RYydH4FRpF8E.svg)](https://asciinema.org/a/ueV8f0BDTwVg2RYydH4FRpF8E)
 
 The data gets pushed into <your-choice-solution>, in my case its Splunk, and I generate dashboards like this with metrics taken from QASA and also syslog from the devices:
+
 
 | Screenshot #1                                                              | Screenshot #2                                                             |
 | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
@@ -89,12 +97,12 @@ As mentioned, the main purpose of developing this was for use in a homelab, so I
 
 Note, this is just my ideas wishlist... don't expect anything to happen:
 
-1. Remove the seperate "alias" field, this should be taken from the yaml section name 
+1. Remove the seperate "alias" field, this should be taken from the yaml section name
 2. Refactor Pollers, to make them easier for others to create new pollers or extend existing ones.
-2. Add "Content-Type" return to each Formatter class, i.e. json or text, for use in the senders
-3. Update FileSender to do file rotation
-4. Consider changing "time" field to "@timestamp"
-5. Pollers
+3. Add "Content-Type" return to each Formatter class, i.e. json or text, for use in the senders
+4. Update FileSender to do file rotation
+5. Consider changing "time" field to "@timestamp"
+6. Pollers
    1. Add SNMP 3 support.
    2. Change from using PySNMP (Developer is no longer maintaining)
    3. Speedtest.net
@@ -104,18 +112,18 @@ Note, this is just my ideas wishlist... don't expect anything to happen:
    7. Get IP Address
    8. Add SSL Expiry checks
    9. ???
-6. Additional Settings:
+7. Additional Settings:
    - Add on/off switches for additional useful fields in formatter (host, IP, ALIAS, SNMP type)
    - Add config setting for applog level (Info or Debug)
-7. Add Command-Line
+8. Add Command-Line
    - Save/Serialise Output (for future test runs)
    - Use saved content for test run
-8. Implement usage of settings.yml (Currently these are ignored)
-9. Add "Processors", that get executed between Poll > Format > Send, uses cases
-   - Remove entries is certain value found (for example, bandwidth = 0.. no point recording it)
-   - Reformat certain values
-10. Add OpenSearch and ZincSearch Senders
-11. Add Tags arg to SNMP Pollers and ensure they are pass through Senders
+9. Implement usage of settings.yml (Currently these are ignored)
+10. Add "Processors", that get executed between Poll > Format > Send, uses cases
+    - Remove entries is certain value found (for example, bandwidth = 0.. no point recording it)
+    - Reformat certain values
+11. Add OpenSearch and ZincSearch Senders
+12. Add Tags arg to SNMP Pollers and ensure they are pass through Senders
 
 # Background
 
