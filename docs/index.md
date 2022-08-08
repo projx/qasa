@@ -1,14 +1,14 @@
-# QtooL
+# QASA
 
 A flexible scheduled poller for querying ad-hoc systems (SNMP, HTTP etc), and sending the results onwards... perhaps to a Log analytics system or syslog server... It really doesn't care!
 
 # Installation
 
-QtooL has predominantly been developed to run with-in a container, you are strongly encouraged to go this path. Also keep in mind, it is fully configured via YAML files, examples are included, but you must customise these before running QtooL, see the Configuration section.
+QASA has predominantly been developed to run with-in a container, you are strongly encouraged to go this path. Also keep in mind, it is fully configured via YAML files, examples are included, but you must customise these before running QASA, see the Configuration section.
 
 ## Containers (Docker etc)
 
-Due to the nature of QTool, it does not come with an "out of the box" configuration, you will need to grab the contents of the /etc-sample/ directory from the Github repo, and make some minor tweaks to so they are suitable for your environment.
+Due to the nature of QASA, it does not come with an "out of the box" configuration, you will need to grab the contents of the /etc-sample/ directory from the Github repo, and make some minor tweaks to so they are suitable for your environment.
 
 The pollers.yml defines what should be polled, i.e a HTTP or SNMP check, the default config has 1 or 2 examples in that you can use. But you will need to update the senders.yml with a place to send the output to, this could anything from a Splunk instance (via HEC), Logstash (with Syslog Log) or ElasticSearch etc..
 
@@ -19,9 +19,9 @@ The pollers.yml defines what should be polled, i.e a HTTP or SNMP check, the def
 ```yaml
 version: "3"
 services:
-  qtool:
-    image: ghcr.io/projxit/projxit/qtool:latest
-    container_name: qtool
+  qasa:
+    image: ghcr.io/projxit/projxit/qasa:latest
+    container_name: qasa
     volumes:
       - ./etc/:/app/etc
 	    - ./logs/:/app/logs   <---- NOTE this is only used for the example sender config to output to file
@@ -34,10 +34,10 @@ services:
 
 ```
 docker pull -d \
---name=qtool \
+--name=qasa \
 -v /path/to/settings:/app/etc \
 --restart unless-stopped \
-ghcr.io/projxit/projxit/qtool:latest
+ghcr.io/projxit/projxit/qasa:latest
 ```
 
 ## Running locally
@@ -51,13 +51,13 @@ These are generic instructions for MacOS and Linux varients:
 1. Ensure you have python 3.x and the latest version of pip
 2. Create a Python 3.x Virtual Env
 3. In the Virtual Env project folder, clone the repository: git clone &lt;url&gt; .
-4. Install the dependancies: `pip -r requirements.txt`
-5. Run qtool using one of the following:
+4. Install the dependancies: `pip install -r requirements.txt`
+5. Run qasa using one of the following:
    - Make the script executable and run it:
-     - `chmod +x qtool.py`
-     - `qtool.py <args>`
+     - `chmod +x qasa.py`
+     - `qasa.py <args>`
    - Run it using python interpreter
-     - `python qtool.py <args>`
+     - `python qasa.py <args>`
 
 ### **CLI Arg Flags**
 
@@ -86,14 +86,14 @@ These are generic instructions for MacOS and Linux varients:
 
 ---
 
-`qtool.py exec scheduler`
-`qtool.py -s exec scheduler`
-`qtool.py fomatter ls`
-`qtool.py formatter show <alias>`
+`qasa.py exec scheduler`
+`qasa.py -s exec scheduler`
+`qasa.py fomatter ls`
+`qasa.py formatter show <alias>`
 
 # Configuration
 
-The QtooL configuration files are local to the project, so
+The QASA configuration files are local to the project, so
 
 - For containers, these are with-in `/app/etc/`
 - For local, these are with-in `<project-folder>/etc`
