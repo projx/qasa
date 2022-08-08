@@ -17,5 +17,3 @@ CMD ["python3", "/app/qasa.py", "exec", "scheduler"]
 # ADD . /app
 # RUN pip install -r /app/requirements.txt
 # CMD ["python3", "/app/qasa.py", "exec", "scheduler"]
-
-
