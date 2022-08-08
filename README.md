@@ -39,7 +39,7 @@ Some key benefits are
 
 # Installation
 
-I recommending reading this whole page before starting, but for a quick-start guide, plus manual install instructions, see the [README.md](docs/index.md)
+I recommending reading this whole page before starting, but for a quick-start guide, plus manual install instructions, see the [install guide](docs/index.md)
 
 # Configuration
 
@@ -86,7 +86,8 @@ As mentioned, the main purpose of developing this was for use in a homelab, so I
 
 Note, this is just my ideas wishlist... don't expect anything to happen:
 
-1. Refactor Pollers, to make them easier for others to create new pollers or extend existing ones.
+1. Remove the seperate "alias" field, this should be taken from the yaml section name 
+2. Refactor Pollers, to make them easier for others to create new pollers or extend existing ones.
 2. Add "Content-Type" return to each Formatter class, i.e. json or text, for use in the senders
 3. Update FileSender to do file rotation
 4. Consider changing "time" field to "@timestamp"
