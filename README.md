@@ -16,8 +16,11 @@ Software such as Grafana and Prometheus, can already do the querying, and give p
 - Internet connection speed-tests
 - Query certain Web APIs
 
-And then ingest it into Splunk, here are two screenshots, show what I do with QASA:
+## This is how it works:
 
+[![asciicast](https://asciinema.org/a/ueV8f0BDTwVg2RYydH4FRpF8E.svg)](https://asciinema.org/a/ueV8f0BDTwVg2RYydH4FRpF8E)
+
+The data gets pushed into <your-choice-solution>, in my case its Splunk, and I generate dashboards like this with metrics taken from QASA and also syslog from the devices:
 
 | Screenshot #1                                                              | Screenshot #2                                                             |
 | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
