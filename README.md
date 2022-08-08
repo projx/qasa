@@ -22,7 +22,8 @@ I'm releasing it now, as whilst I can spend weeks or months adding other feature
 - Check websites are available and latency load times
 - Query certain Web APIs
 
- Uptime Kuma has inspired me to add  Web UI to it
+Uptime Kuma has inspired me to add  Web UI to it
+
 ## This is how it works:
 
 [![asciicast](https://asciinema.org/a/ueV8f0BDTwVg2RYydH4FRpF8E.svg)](https://asciinema.org/a/ueV8f0BDTwVg2RYydH4FRpF8E)
@@ -93,40 +94,45 @@ As mentioned, the main purpose of developing this was for use in a homelab, so I
 
 (* Please be aware, only SNMP 2c supported at present. This formatter returns a Python Dict object, its intended for use with OpenSearch, ElasticSearch and ZincSearch)
 
+# Immediate Roadmap
+
+1. Remove the seperate "alias" field, this should be taken from the yaml section name
+2. Properly document debug logging to file
+3. Add Ping and traceroute pollers
+4.
+
 # ** Possible future enhancements **
 
 Note, this is just my ideas wishlist... don't expect anything to happen:
 
-1. Remove the seperate "alias" field, this should be taken from the yaml section name
-2. Refactor Pollers, to make them easier for others to create new pollers or extend existing ones.
-3. Add "Content-Type" return to each Formatter class, i.e. json or text, for use in the senders
-4. Update FileSender to do file rotation
-5. Consider changing "time" field to "@timestamp"
-6. Pollers
+1. Refactor Pollers, to make them easier for others to create new pollers or extend existing ones.
+   2Add "Content-Type" return to each Formatter class, i.e. json or text, for use in the senders
+   3Update FileSender to do file rotation
+   4Consider changing "time" field to "@timestamp"
+   5Pollers
    1. Add SNMP 3 support.
    2. Change from using PySNMP (Developer is no longer maintaining)
    3. Speedtest.net
-   4. Ping
+   4. ~~Ping~~
    5. HTTP API call
    6. Trace Route
    7. Get IP Address
    8. Add SSL Expiry checks
-   9. ???
-7. Additional Settings:
+2. Additional Settings:
    - Add on/off switches for additional useful fields in formatter (host, IP, ALIAS, SNMP type)
    - Add config setting for applog level (Info or Debug)
-8. Add Command-Line
+3. Add Command-Line
    - Save/Serialise Output (for future test runs)
    - Use saved content for test run
-9. Implement usage of settings.yml (Currently these are ignored)
-10. Add "Processors", that get executed between Poll > Format > Send, uses cases
-    - Remove entries is certain value found (for example, bandwidth = 0.. no point recording it)
-    - Reformat certain values
-11. Add OpenSearch and ZincSearch Senders
-12. Add Tags arg to SNMP Pollers and ensure they are pass through Senders
+4. Implement usage of settings.yml (Currently these are ignored)
+5. Add "Processors", that get executed between Poll > Format > Send, uses cases
+   - Remove entries is certain value found (for example, bandwidth = 0.. no point recording it)
+   - Reformat certain values
+6. Add OpenSearch and ZincSearch Senders
+7. Add Tags arg to SNMP Pollers and ensure they are pass through Senders
 
 # Background
 
 ---
 
-I started writing this in summer of 2020, I've personally been using it since then and making incremental changes. I never intended to open source it, but some users in r/homelab showed an interest, so I thought why not. You many find references to "QTool" in the code, this was its original name, but I was preparing for a trip to our casa in Spain at the time, and QASA seemed to have a better ring to it.
+I started writing this in summer of 2020, I've personally been using it since then and making incremental changes. I never intended to open source it, but some users in r/homelab showed an interest, so I thought why not. You many find references to "QTool" in the code, this was its original name, but I was preparing for a trip to our home in Spain at the time, and QASA seemed to have a better ring to it.
