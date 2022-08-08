@@ -18,14 +18,33 @@ pollers:
       - http
       - website
 
+
+#  PA-FW:
+#    alias: PA-FW
+#    connector_class: lib.pollers.snmp.QSNMPNetDevice
+#    sender: SPLUNK_HEC
+#    formatter: JSON
+#    community: secret-snmp-community-string
+#    type: firewall
+#    host: 192.168.1.1
+#    interval: '15'
+#    snmp_version: snmpv2c
+#    interfaces:
+#    - ethernet1/2.10
+#    - ethernet1/2.40
+#    - ethernet1/2.50
+#    - ethernet1/7
+#    - ethernet1/8
+
+
 #  UBNT-WAP-01:
 #    alias: UN-SW-SVR-TOP
 #    connector_class: lib.pollers.snmp.QSNMPNetDevice
 #    sender: SPLUNK_HEC
 #    formatter: JSON
-#    community: 1nKquir3R434wer3
+#    community: secret-snmp-community-string
 #    type: firewall
-#    host: 10.10.50.186
+#    host: 192.168.1.100
 #    interval: '15'
 #    snmp_version: snmpv2c
 
@@ -34,9 +53,9 @@ pollers:
 #    connector_class: lib.pollers.snmp.QSNMPNetDevice
 #    sender: SPLUNK_HEC
 #    formatter: JSON
-#    community: 1nKquir3R434wer3
+#    community: secret-snmp-community-string
 #    type: firewall
-#    host: 10.10.50.193
+#    host: 192.168.1.150
 #    interval: '15'
 #    snmp_version: snmpv2c
 
@@ -45,8 +64,8 @@ pollers:
 #    connector_class: lib.pollers.snmp.QSNMPApcUPS
 #    sender: ZINCSEARCH_LOCAL
 #    formatter: DICT
-#    community: 1nKquir3R434wer3
+#    community: secret-snmp-community-string
 #    type: ups
-#    host: 10.10.50.201
+#    host: 10.10.10.201
 #    interval: '5'
 #    snmp_version: snmpv2c
