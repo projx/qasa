@@ -24,11 +24,11 @@ I'm releasing it now, as whilst I can spend weeks or months adding other feature
 
 Uptime Kuma has inspired me to add  Web UI to it
 
-## This is how it works:
+## A quick demo of getting it working:
 
 [![asciicast](https://asciinema.org/a/ueV8f0BDTwVg2RYydH4FRpF8E.svg)](https://asciinema.org/a/ueV8f0BDTwVg2RYydH4FRpF8E)
 
-The data gets pushed into <your-choice-solution>, in my case its Splunk, and I generate dashboards like this with metrics taken from QASA and also syslog from the devices:
+The data gets pushed into `your-choice-solution,` in my case its **Splunk**, and I generate dashboards like this with metrics taken from QASA and also syslog from the devices:
 
 
 | Screenshot #1                                                              | Screenshot #2                                                             |
