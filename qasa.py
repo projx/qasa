@@ -48,7 +48,7 @@ def global_setup(show_output = True):
 @click.group()
 @click.option('-s', '--suppress', is_flag=True, default=False, help="Suppress most output (Note actual output level is defined in settings.yml")
 def main(suppress):
-    """QtooL - Is a scheduler for Polling, Formatting and Sending """
+    """QASA - Is a scheduler for Polling, Formatting and Sending """
 
     # Handle flags
     show_output = False if suppress else True

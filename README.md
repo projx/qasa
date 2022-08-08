@@ -1,6 +1,6 @@
-[![Publish Docker image](https://github.com/projx/qtool/actions/workflows/build-and-push.yml/badge.svg)](https://github.com/projx/qtool/actions/workflows/build-and-push.yml)
+[![Publish Docker image](https://github.com/projx/qasa/actions/workflows/build-and-push.yml/badge.svg)](https://github.com/projx/qasa/actions/workflows/build-and-push.yml)
 
-# QtooL (Query Too Log)
+# QASA (Query Anything, Send Anywhere)
 
 A poller for pulling useful data (SNMP, HTTP etc), and sending the results onwards... perhaps to a Log analytics system or syslog server... It really doesn't care!
 
@@ -14,7 +14,7 @@ Personally, I wanted to be able to visualise my homelab metrics, such as:
 - Internet connection speed-tests
 - Query certain Web APIs
 
-Understandably, sane people use Grafana for this, it does it out-of-the-box... but I wanted the freedom of using something else, being able to easily point my data elsewhere, such as Splunk, ELK or even a Cloud service. So I wrote QtooL...
+Understandably, sane people use Grafana for this, it does it out-of-the-box... but I wanted the freedom of using something else, being able to easily point my data elsewhere, such as Splunk, ELK or even a Cloud service. So I wrote QASA...
 
 ## What is it?
 
@@ -34,7 +34,7 @@ Some key requirements were
 
 ### There are 3 main components:
 
-## ![connectors.png](https://github.com/projx/qtool/blob/main/docs/connectors.png?raw=true)
+## ![connectors.png](https://github.com/projx/qasa/blob/main/docs/connectors.png?raw=true)
 
 The Scheduler creates a thread for each Poller, which runs the Poller > Formatter > Sender, then sleeps for a defined interval.
 
@@ -84,13 +84,13 @@ Please see the [README.md](docs/index.md) for installation instructions.
 ## Getting Started
 
 There is a basic by working configuration (see etc-sample/) which polls yahoo.com and then writes the data to the log/ directory, also there are several examples for other pollers, such polling a Switch and WAP via SNMP.
-There is a sample configuration (see etc-sample/), it includes
 
-Please see the [README.md](docs/index.md) for details on the configuration, and a breakdown of all the different options.
+Please see the [index.md](docs/index.md) for details on the configuration, and a breakdown of all the different options.
 
 ### **Possible Enhancements:**
 
-1. Add "Content-Type" return to each Formatter class, i.e. json or text, for use in the senders
+1. Refactor Pollers, to make them easier for others to create new pollers or extend existing ones.
+2. Add "Content-Type" return to each Formatter class, i.e. json or text, for use in the senders
 2. Update FileSender to do file rotation
 3. Consider changing "time" field to "@timestamp"
 4. Pollers
@@ -121,6 +121,4 @@ Please see the [README.md](docs/index.md) for details on the configuration, and 
 
 ---
 
-I originally started writing this in summer of 2020, I've been using it in my homelab since beginning of 2021, and I intended to release to make it available last summer, but unfortunately life got in the way.
-
-Now I've had an idea where I'd like to build a dashboard, something complimentary to Uptime Kuma, but monitoring SNMP etc, which will make use of QTool for polling, hence I've decided get it to a point I'm happy to make available for others to see.
+I started writing this in summer of 2020, I've personally been using it since then and making incremental changes. I never intended to open source it, but some users in r/homelab showed an interest, so I thought why not. You many find references to "QTool" in the code, this was its original name, but I was preparing for a trip to our casa in Spain at the time, and QASA seemed to have a better ring to it.

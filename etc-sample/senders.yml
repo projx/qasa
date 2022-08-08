@@ -1,18 +1,18 @@
 senders:
 
-  ## This will output to app/log/qtool_example.log
+  ## This will output to app/log/qasa_example.log
   LOCALFILE:
     connector_class: lib.senders.syslog.QFileSender
     alias: LOCALFILE
     directory: logs
-    file: 'qtool_example.log'
+    file: 'qasa_example.log'
 
   ## You can make multiple senders of the same type, but they must have unique aliases.
   LOCALFILE_ALTERNATIVE:
     connector_class: lib.senders.syslog.QFileSender
     alias:   LOCALFILE_ALTERNATIVE
     directory: logs
-    file: 'qtool_example.log'
+    file: 'qasa_example.log'
 
 #  SYSLOG_TCP:
 #    alias: SPLUNK_SYSLOG_UDP
