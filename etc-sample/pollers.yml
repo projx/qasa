@@ -4,7 +4,7 @@ pollers:
     connector_class: lib.pollers.http.QHTTPCheck
     sender: LOCALFILE                             ## SEE senders.yml for how this is configured
     formatter: JSON                               ## SEE formatters.yml for how this is configured
-    interval: 20
+    interval: 5
     type: web-check                               ## Just an identify that gets inserted with the Sender data, useful for grouping by etc
     url_type: "External"
     url: "https://www.yahoo.com"
