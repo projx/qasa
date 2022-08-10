@@ -8,4 +8,4 @@ applog:
      output_level: info
 
      ## Output app-logging to file, default value is False, to output to file, specify the path with filename
-     output_file: False  ## False, or path to file
+     output_file: false  ## False, or path to file such as ./logs/qasa.log

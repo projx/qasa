@@ -22,15 +22,35 @@ def global_setup(show_output = True):
     workdir = dir_path = os.path.dirname(os.path.realpath(__file__))
     workdir += "/etc" if ENV_TYPE == "production" else "/etc-sample"
     print("Workdir: {}".format(workdir))
+
     ## Load config files
     settings_path = workdir + "/settings.yml"
     pollers_path = workdir + "/pollers.yml"
     formatters_path = workdir + "/formatters.yml"
     senders_path = workdir + "/senders.yml"
 
-    ## Load each file... These could easily be merged, but seperate is more tidy
+    ## Load settings.yml, doing this early as we need to set-up the logging based upon this..
     applog.debug("Loading settings config file: " + settings_path)
     QConfigManager.load(settings_path)
+
+    ## Setup config, either just STD, or STD and File!
+    logfile = QConfigManager.get_value("applog", "output_file")
+    if logfile!="" and logfile!=False:
+        applog.info("Logging to file setting is enabled, outputting application will be written to: {}".format(logfile))
+        applog.set_file_handler(logfile)
+    else:
+        applog.info("Logging to file is disabled (see settings.yml)")
+
+    ## Level pf logging, default is just iok
+    level = QConfigManager.get_value("applog", "output_level")
+    if str(level).lower() == "debug":
+        applog.info("**** WARNING **** **** WARNING **** Debug logging in enabled, this may generate a lot of additional output")
+        applog.set_debug(True)
+    else:
+        applog.info("Debug logging is disabled, only INFO and ERROR messages will be output")
+        applog.set_info(True)
+
+    ## Load each file... These could easily be merged, but seperate is more tidy
     applog.debug("Loading pollers config file: " + pollers_path)
     QConfigManager.load(pollers_path)
     applog.debug("Loading formatter config file: " + formatters_path)
@@ -38,11 +58,6 @@ def global_setup(show_output = True):
     applog.debug("Loading senders config file: " + senders_path)
     QConfigManager.load(senders_path)
 
-    level = QConfigManager.get_value("applog", "output_level")
-    if str(level).lower() == "debug":
-        applog.set_debug(True)
-    else:
-        applog.set_info(True)
 
 
 @click.group()
