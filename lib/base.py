@@ -159,7 +159,7 @@ class QFormatConnector(QConnector):
         result_type = poller.get_result_type()
 
         if result_type == QConsts.RESULT_SINGLE:
-            parsed = self.format(poller.results, poller.export_list())
+            parsed = self.format(poller.results)
             results.append(parsed)
 
         elif result_type == QConsts.RESULT_TABLE:
