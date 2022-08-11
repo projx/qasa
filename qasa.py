@@ -21,7 +21,7 @@ def global_setup(show_output = True):
     ## Determine path for config files
     workdir = dir_path = os.path.dirname(os.path.realpath(__file__))
     workdir += "/etc" if ENV_TYPE == "production" else "/etc-sample"
-    print("Workdir: {}".format(workdir))
+    applog.info("Workdir: {}".format(workdir))
 
     ## Load config files
     settings_path = workdir + "/settings.yml"

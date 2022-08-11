@@ -101,7 +101,6 @@ class QSNMPNetResultModel(QResultsModel):
 
     sysName: str
     sysIP: str
-    deviceType: str = ""
     ifSpeedOut: int = None
     ifSpeedIn: int = None
     ifSpeedTotal: int
@@ -213,7 +212,7 @@ class QSNMPNetDevice(QSNMPConnector):
                     applog.debug("Skipping {} interface {}, its not in the configuration for this connector".format(args.host, row['ifDescr']))
         else:
             applog.debug("First run - Values such as ifAlias and host etc are not set on this initial run!")
-            results = cn
+            results = dict()
 
         self.previous_time = ct
         self.previous_net = cn

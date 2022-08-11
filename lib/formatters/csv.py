@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from lib.base import QFormatConnector, QFormatterModel
+from lib.base import QFormatConnector, QFormatterModel, QResultsModel
 
 ########################################################################################################################
 ## Config Models
@@ -29,7 +29,7 @@ class QCSVFormatter(QFormatConnector):
         pass
 
 
-    def format(self, row, export_keys : list) -> str:
+    def format(self, row : QResultsModel) -> str:
         """
         Takes a dictionary, converting into key-paired comma seperated row
         """
@@ -38,9 +38,8 @@ class QCSVFormatter(QFormatConnector):
         if self.args.prefix_timestamp and self.args.prefix_timestamp!=False and self.args.prefix_timestamp!="False":
             output = datetime.now().strftime(self.args.prefix_timestamp) + ","
 
-        for key in export_keys:
-            if key in row:
-                print(key)
-                output = output + f"{key}='{row[key]}',"
+        c = dict(row)
+        for key, value in c.items():
+            output = output + f"{key}='{value}',"
 
         return output

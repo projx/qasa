@@ -164,7 +164,7 @@ class QFormatConnector(QConnector):
 
         elif result_type == QConsts.RESULT_TABLE:
             for key, item in poller.results.items():
-                parsed = self.format(item, poller.export_list())
+                parsed = self.format(item)
                 results.append(parsed)
         else:
             raise Exception('Error {} poller class has not correctly implemented get_result_type()'.format(poller.args.alias))

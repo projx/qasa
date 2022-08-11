@@ -1,7 +1,7 @@
 from datetime import datetime
 
 import json
-from lib.base import QFormatConnector,  QFormatterModel
+from lib.base import QFormatConnector,  QFormatterModel, QResultsModel
 from pprint import pprint
 
 ########################################################################################################################
@@ -39,17 +39,12 @@ class QDictFormatter(QFormatConnector):
         pass
 
 
-    def format(self, row, export_keys : list) -> dict:
+    def format(self, row : QResultsModel) -> dict:
         """
-        Takes a dictionary, converting into key-paired comma seperated row
+        Takes a QResultsModel, returns it as a Dict, which is later sent to a compatible sender (e.g. OpenSearch)
         """
-        output = dict()
-        output = row
-        #if self.args["prefix_timestamp"]:
-        # for key in export_keys:
-        #    if key in row:
-        #       output[key] = row[key]
-        if self.args.prefix_timestamp and self.args.prefix_timestamp!=False and self.args.prefix_timestamp!="False":
-            output["time"] = datetime.now().strftime(self.args.prefix_timestamp)
 
-        return output
+        if self.args.prefix_timestamp and self.args.prefix_timestamp!=False:
+            row.time = datetime.now().strftime(self.args.prefix_timestamp)
+
+        return dict(row)

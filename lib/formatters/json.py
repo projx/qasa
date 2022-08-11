@@ -1,8 +1,7 @@
 from datetime import datetime
-
 import json
-from lib.base import QFormatConnector,  QFormatterModel
-
+from lib.base import QFormatConnector,  QFormatterModel, QResultsModel
+from pprint import pprint
 
 ########################################################################################################################
 ## Config Models
@@ -38,14 +37,12 @@ class QJSONFormatter(QFormatConnector):
         pass
 
 
-    def format(self, row, export_keys : list) -> str:
+    def format(self, row : QResultsModel) -> str:
         """
-        Takes a dictionary, converting into key-paired comma seperated row
+        Takes a QResultsModel, returns it as a JSON string, which is later sent to a compatible sender (e.g. SplunkHEC)
         """
-        output = ""
+
         if self.args.prefix_timestamp and self.args.prefix_timestamp!=False:
             row.time = datetime.now().strftime(self.args.prefix_timestamp)
 
-        output =  json.dumps(dict(row))
-
-        return output
+        return json.dumps(dict(row))
