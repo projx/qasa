@@ -121,6 +121,7 @@ Note, this is just my ideas wishlist... don't expect anything to happen:
 2. Additional Settings:
    - Add on/off switches for additional useful fields in formatter (host, IP, ALIAS, SNMP type)
    - Add config setting for applog level (Info or Debug)
+   - Auto re-load on config change
 3. Add Command-Line
    - Save/Serialise Output (for future test runs)
    - Use saved content for test run
